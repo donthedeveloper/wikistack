@@ -25,7 +25,7 @@ var Page = db.define('pages', {
 }, {
     getterMethods: {
         route: function() {
-            return '/wiki/' + this.getDataValue('urlTitle');
+            return '/wiki/' + this.urlTitle;
         }
     },
     hooks: {
@@ -54,6 +54,8 @@ var User = db.define('user', {
         isEmail: true
     }
 });
+
+Page.belongsTo(User, { as: 'author' });
 
 module.exports = {
   Page: Page,
